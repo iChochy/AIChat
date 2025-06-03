@@ -15,22 +15,21 @@ struct MessageListView: View {
     var body: some View {
         ScrollViewReader { proxy in
             ScrollView {
-                LazyVStack(spacing: 10) {
+                VStack(spacing: 10) {
                     ForEach(messages) { message in
                         ChatMessageView(message: message).id(message)
                     }
-                }.id("VStack").padding()
-            }.onChange(of: messages.count) { oldValue, newValue in
-                    scrollViewToBotton(proxy: proxy)
+                }
+                .padding()
+            }.onChange(of: messages.count) {
+                scrollViewToBotton(proxy: proxy)
             }.onAppear {
                 scrollViewToBotton(proxy: proxy)
-            }
+            }.scrollClipDisabled()
         }
     }
 
     private func scrollViewToBotton(proxy: ScrollViewProxy) {
-        withAnimation {
-            proxy.scrollTo(messages.last, anchor: .bottom)
-        }
+        proxy.scrollTo(messages.last, anchor: .bottom)
     }
 }

@@ -45,6 +45,13 @@ class AIProviderEnumModel {
         let service = GeminiService()
         return AIProviderEnumModel(title: title, icon: icon, APIURL: APIURL,service:service)
     }
+    static func getDeepSeek() -> AIProviderEnumModel{
+        let title = "DeepSeek"
+        let icon = ""
+        let APIURL = "https://api.deepseek.com"
+        let service = DeepSeekService()
+        return AIProviderEnumModel(title: title, icon: icon, APIURL: APIURL,service:service)
+    }
     static func getCustom() -> AIProviderEnumModel{
         let title = "Custom(OpenAI)"
         let icon = ""

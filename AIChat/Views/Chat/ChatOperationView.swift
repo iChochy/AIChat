@@ -32,7 +32,8 @@ struct ChatOperationView: View {
             } label: {
                 Image(systemName: "trash")
             }
-        }.buttonBorderShape(.circle)
+        }
+        .buttonBorderShape(.circle)
         HStack {
             Spacer()
         }

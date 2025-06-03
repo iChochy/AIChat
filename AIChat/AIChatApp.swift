@@ -12,6 +12,7 @@ import SwiftUI
 struct AIChatApp: App {
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("appearance") var appearance = AppearanceEnum.system
+    @AppStorage("isInserted") var isInserted = true
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             ChatSession.self,
@@ -34,7 +35,7 @@ struct AIChatApp: App {
     }()
 
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: "Chat") {
             //            MarkdownParserView()
             AIContentView()
                 .onAppear(perform: {
@@ -49,6 +50,12 @@ struct AIChatApp: App {
         }.modelContainer(sharedModelContainer)
 
         
+        MenuBarExtra(isInserted: $isInserted) {
+            MenuBarExtraView()
+        } label: {
+            Text("AI")
+        }
+
         Window("Settings", id: "Settings") {  // 给窗口一个标题和 ID
             SettingsView()
                 .onAppear(perform: {

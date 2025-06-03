@@ -16,26 +16,24 @@ struct ChatContentView: View {
             switch message.role {
             case .system:
                 Text(message.content)
-                    .padding(8)
                     .fixedSize(horizontal: false, vertical: true)
                     .background(messageBackgroundColor)
                     .foregroundStyle(messageForegroundColor)
-                    .cornerRadius(8)
+                    .cornerRadius(30)
             case .user:
                 Text(message.content)
-                    .padding(8)
+                    .padding()
                     .fixedSize(horizontal: false, vertical: true)
                     .background(messageBackgroundColor)
                     .foregroundStyle(messageForegroundColor)
-                    .cornerRadius(8)
+                    .cornerRadius(30)
             case .assistant:
                 Markdown(toMarkdown(), lazy: true)
-                    .padding(8)
+                    .padding()
                     .fixedSize(horizontal: false, vertical: true)
                     .background(messageBackgroundColor)
                     .foregroundStyle(messageForegroundColor)
-                    .font(.system(size: 16))
-                    .cornerRadius(8)
+                    .cornerRadius(30)
             }
         }
     }
@@ -52,7 +50,7 @@ struct ChatContentView: View {
     // 根据角色决定背景色
     private var messageBackgroundColor: Color {
         switch message.role {
-        case .user: return Color.accentColor.opacity(0.5)
+        case .user: return Color.accentColor
         case .assistant: return Color.gray.opacity(0.3)
         case .system: return Color.orange.opacity(0.3)
         }

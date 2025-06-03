@@ -11,31 +11,49 @@ import SwiftUI
 // MARK: - Input Area View
 struct InputAreaView: View {
     @Binding var userInput: String
+    @State private var textHeight: CGFloat = 0
     let isSending: Bool
     let sendAction: () -> Void
 
     var body: some View {
-        HStack {
+        HStack(alignment: .bottom) {
             TextEditor(text: $userInput)
                 .scrollContentBackground(.hidden)
                 .disabled(isSending)
-                .frame(height: 50)
+                .frame(height: min(200, max(25, textHeight)))
+                .background(
+                    Text(userInput.isEmpty ? "" : userInput)
+                        .foregroundColor(.clear)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .background(
+                            GeometryReader { geometry in
+                                Color.clear.onAppear {
+                                    textHeight = geometry.size.height
+                                }
+                                .onChange(
+                                    of: userInput,
+                                    {
+                                        textHeight = geometry.size.height
+                                    }
+                                )
+                            }
+                        )
+                        .allowsHitTesting(false)
+                )
                 .padding()
                 .font(.title)
-                .cornerRadius(50)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 50)
-                        .stroke(Color.gray.opacity(0.3), lineWidth: 2)
-                )
+                .scrollIndicators(.hidden)
             Button(action: sendAction) {
-                if isSending {
-                    ProgressView()
-                        .scaleEffect(2)
-                        .frame(width: 80)
-                } else {
-                    Image(systemName: "arrow.up.circle.fill")
-                        .font(.system(size: 80))
-                }
+                    if isSending {
+                        ZStack{
+                            ProgressView()
+                            Image(systemName: "arrow.up.circle.fill")
+                                .font(.system(size: 50)).hidden()
+                        }
+                    } else {
+                        Image(systemName: "arrow.up.circle.fill")
+                            .font(.system(size: 50))
+                    }
             }
             .keyboardShortcut(.return, modifiers: .command)
             .disabled(
@@ -43,9 +61,15 @@ struct InputAreaView: View {
                     .isEmpty || isSending
             )
             .buttonStyle(.link)
-            .padding(.trailing)
         }
-        .padding()
+        .overlay(
+            RoundedRectangle(cornerRadius: 30)
+                .stroke(Color.gray.opacity(0.8), lineWidth: 2)
+        )
         .background()
+        .cornerRadius(30)
+        .shadow(radius: 10)
+        .padding(.bottom)
+        .padding(.horizontal,50)
     }
 }

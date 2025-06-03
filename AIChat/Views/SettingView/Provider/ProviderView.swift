@@ -12,8 +12,8 @@ struct ProviderView: View {
     let title = "Provider"
     let icon = "server.rack"
 
-    @Environment(\.modelContext) private var context
     @State var APIKey: String = ""
+    @Environment(\.modelContext) private var context
 
     @State var selectModel: AIModel?
 
@@ -23,27 +23,32 @@ struct ProviderView: View {
     var providers: [AIProvider] = []
 
     var body: some View {
-        List(providers,rowContent: { item in
+        List(content: {
+            ForEach(providers) { item in
                 ProviderEditorView(provider: item)
-        })
-        .toolbar {
-            ToolbarItemGroup {
-                Menu {
-                    ForEach(AIProviderEnum.allCases) { item in
-                        Button {
-                            addProvider(type: item)
-                        } label: {
-                            HStack {
-                                Image(systemName: "plus").foregroundStyle(Color.accentColor)
-                                Text(item.name)
+            }
+        }).scrollContentBackground(.hidden)
+            .toolbar {
+                ToolbarItemGroup {
+                    Menu {
+                        ForEach(AIProviderEnum.allCases) { item in
+                            Button {
+                                addProvider(type: item)
+                            } label: {
+                                HStack {
+                                    Image(systemName: "plus").foregroundStyle(
+                                        Color.accentColor
+                                    )
+                                    Text(item.name)
+                                }
                             }
                         }
+                    } label: {
+                        Label("Plus", systemImage: "plus")
                     }
-                } label: {
-                    Label("Plus", systemImage: "plus")
                 }
             }
-        }
+            .navigationTitle("Provider")
     }
 
     private func addProvider(type: AIProviderEnum) {

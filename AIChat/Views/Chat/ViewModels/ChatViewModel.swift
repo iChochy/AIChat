@@ -41,7 +41,7 @@ class ChatViewModel: ObservableObject {
             role: .user,
             session: session
         )
-
+        
         if session.title.isEmpty {
             session.title = userContent
         }

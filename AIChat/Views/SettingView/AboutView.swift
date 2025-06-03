@@ -33,7 +33,6 @@ struct AboutView: View {
 
     var body: some View {
         ScrollView {
-
             VStack(spacing: 20) {
                 // 应用图标
                 Image(
@@ -116,8 +115,8 @@ struct AboutView: View {
                     .font(.footnote)
                     .foregroundColor(.gray)
 
-            }
-            .padding(20).navigationTitle("About")
+            }.padding()
+            .navigationTitle("About")
         }
     }
 

@@ -44,6 +44,8 @@
 		B48070402D9BB678004C952C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48070362D9BB678004C952C /* Item.swift */; };
 		B48070412D9BB678004C952C /* WindowContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48070332D9BB678004C952C /* WindowContentView.swift */; };
 		B48070422D9BB678004C952C /* AIChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B480702F2D9BB678004C952C /* AIChatApp.swift */; };
+		B497315A2DF1C55C004D9DCD /* DeepSeekService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49731592DF1C55C004D9DCD /* DeepSeekService.swift */; };
+		B497315C2DF1DA49004D9DCD /* MenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B497315B2DF1DA49004D9DCD /* MenuBarExtraView.swift */; };
 		B49EFACA2DE4987200A59A87 /* MDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49EFAC92DE4987200A59A87 /* MDView.swift */; };
 		B4A22C682DEAC7180091CB68 /* MarkdownTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A22C5F2DEAC7180091CB68 /* MarkdownTable.swift */; };
 		B4A22C692DEAC7180091CB68 /* MarkdownHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A22C5A2DEAC7180091CB68 /* MarkdownHeader.swift */; };
@@ -111,6 +113,8 @@
 		B48070342D9BB678004C952C /* ItemContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentView.swift; sourceTree = "<group>"; };
 		B48070362D9BB678004C952C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B48070372D9BB678004C952C /* WindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowView.swift; sourceTree = "<group>"; };
+		B49731592DF1C55C004D9DCD /* DeepSeekService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepSeekService.swift; sourceTree = "<group>"; };
+		B497315B2DF1DA49004D9DCD /* MenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarExtraView.swift; sourceTree = "<group>"; };
 		B49EFAC92DE4987200A59A87 /* MDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDView.swift; sourceTree = "<group>"; };
 		B4A22C572DEAC7180091CB68 /* MarkdownBlockquote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownBlockquote.swift; sourceTree = "<group>"; };
 		B4A22C582DEAC7180091CB68 /* MarkdownCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownCode.swift; sourceTree = "<group>"; };
@@ -159,7 +163,6 @@
 		B440D2532DD899B70064B3BE /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
-				B440D2512DD8976A0064B3BE /* SettingsView.swift */,
 				B440D25A2DDB53E70064B3BE /* GeneralView.swift */,
 				B440D25E2DDB558B0064B3BE /* AboutView.swift */,
 				B4940E132DE2C20600F9D3F1 /* Provider */,
@@ -188,8 +191,11 @@
 		B457E8612DB3F0B800598C36 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B457E8822DBB778A00598C36 /* AIContentView.swift */,
+				B440D2512DD8976A0064B3BE /* SettingsView.swift */,
 				B457E89A2DBFA90500598C36 /* Chat */,
 				B440D2532DD899B70064B3BE /* SettingView */,
+				B497315B2DF1DA49004D9DCD /* MenuBarExtraView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,7 +227,6 @@
 		B457E89A2DBFA90500598C36 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				B457E8822DBB778A00598C36 /* AIContentView.swift */,
 				B457E8962DBFA80E00598C36 /* AIChatView.swift */,
 				B44725D02DC1FA8A00B9B31B /* InputAreaView.swift */,
 				B44725CC2DC1FA6300B9B31B /* MessageListView.swift */,
@@ -239,6 +244,7 @@
 			children = (
 				B457E88E2DBFA74100598C36 /* GrokService.swift */,
 				B440D2742DDF72AC0064B3BE /* GeminiService.swift */,
+				B49731592DF1C55C004D9DCD /* DeepSeekService.swift */,
 				B457E8802DBB775F00598C36 /* APIResponseMessage.swift */,
 			);
 			path = Services;
@@ -470,6 +476,7 @@
 				B440D2522DD8976A0064B3BE /* SettingsView.swift in Sources */,
 				B440D2612DDB83200064B3BE /* AIProvider.swift in Sources */,
 				B440D2552DD899FF0064B3BE /* SettingsEnum.swift in Sources */,
+				B497315C2DF1DA49004D9DCD /* MenuBarExtraView.swift in Sources */,
 				B440D26A2DDDB6E00064B3BE /* ProviderEditorView.swift in Sources */,
 				B4A22C682DEAC7180091CB68 /* MarkdownTable.swift in Sources */,
 				B4A22C692DEAC7180091CB68 /* MarkdownHeader.swift in Sources */,
@@ -504,6 +511,7 @@
 				B49EFACA2DE4987200A59A87 /* MDView.swift in Sources */,
 				B48070422D9BB678004C952C /* AIChatApp.swift in Sources */,
 				B457E8832DBB778A00598C36 /* AIContentView.swift in Sources */,
+				B497315A2DF1C55C004D9DCD /* DeepSeekService.swift in Sources */,
 				B44725CF2DC1FA7300B9B31B /* ChatViewModel.swift in Sources */,
 				B44725D62DC519EB00B9B31B /* ScrollableTextView.swift in Sources */,
 				B440D25D2DDB55880064B3BE /* ProviderView.swift in Sources */,
@@ -646,7 +654,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AIChat/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -682,7 +690,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AIChat/Preview Content\"";
 				DEVELOPMENT_TEAM = "";

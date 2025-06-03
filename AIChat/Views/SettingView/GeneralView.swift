@@ -14,11 +14,21 @@ struct GeneralView: View {
     @AppStorage("nickname") var nickname = "AI Chat"
     @AppStorage("language") var language = LanguageEnum.auto
     @AppStorage("appearance") var appearance = AppearanceEnum.system
+    @AppStorage("isInserted") var isInserted = true
 
     var body: some View {
         ScrollView {
             Form {
                 GroupBox {
+                    Section(
+                        "Open menu bar icon?"
+                    ) {
+                        Picker("MenuBar", selection: $isInserted) {
+                            Text("Open").tag(true)
+                            Text("Close").tag(false)
+                        }.pickerStyle(.segmented).padding()
+                    }
+                    
                     Section(
                         "Select app appearance?"
                     ) {
@@ -77,7 +87,7 @@ struct GeneralView: View {
                 
             }.padding()
                 .textFieldStyle(.roundedBorder)
+                .navigationTitle("General")
         }
-
     }
 }

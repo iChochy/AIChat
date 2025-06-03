@@ -11,6 +11,7 @@ enum AIProviderEnum: String, Codable, CaseIterable, Identifiable {
     case grok = "Grok"
     case openAI = "OpenAI"
     case gemini = "Gemini"
+    case deepSeek = "DeepSeek"
     case custom = "Custom(OpenAI)"
 
     var id: String { self.rawValue }
@@ -20,6 +21,7 @@ enum AIProviderEnum: String, Codable, CaseIterable, Identifiable {
         .grok:AIProviderEnumModel.getGrok(),
         .openAI:AIProviderEnumModel.getOpenAI(),
         .gemini:AIProviderEnumModel.getGemini(),
+        .deepSeek:AIProviderEnumModel.getDeepSeek(),
         .custom:AIProviderEnumModel.getCustom()
     ]
     

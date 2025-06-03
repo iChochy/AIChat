@@ -26,7 +26,6 @@ struct AIContentView: View {
     var body: some View {
         NavigationSplitView {
             Divider()
-            // --- 侧边栏 (会话列表) ---
             VStack {
                 List(sessions, selection: $selectedSession) { session in
                     Text(session.title.isEmpty ? "New Chat" : session.title)
@@ -90,7 +89,7 @@ struct AIContentView: View {
                     }
                 }
             }
-            
+
         } detail: {
             if let session = selectedSession {
                 AIChatView(session: session)
@@ -102,14 +101,11 @@ struct AIContentView: View {
             }
         }
     }
-    
-    
-    
-    
+
     /// 创建系统信息
     /// - Parameter session: Session
-    private func createSysytemMessage(session:ChatSession){
-        guard language != .auto else{
+    private func createSystemMessage(session: ChatSession) {
+        guard language != .auto else {
             return
         }
         _ = ChatMessage(
@@ -151,8 +147,13 @@ struct AIContentView: View {
 
     // 创建新会话
     private func createNewSession(model: AIModel) {
+        if let session = sessions.first(where: { $0.title.isEmpty }) {
+            selectedSession = session
+            return
+        }
+
         let newSession = ChatSession(model: model)
-        createSysytemMessage(session: newSession)
+        createSystemMessage(session: newSession)
         modelContext.insert(newSession)
         do {
             try modelContext.save()  // 保存以获取持久化 ID
