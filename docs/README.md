@@ -1,4 +1,4 @@
-# AIChat
+# AI Chat
 
 AI Chat 是一个智能聊天工具，支持Gemini、Grok、OpenAI和自定义AI，使用SwiftUI、SwiftData开发，macOS原生AI客服端
 

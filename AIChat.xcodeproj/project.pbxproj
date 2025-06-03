@@ -70,7 +70,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B400B5052DEF0988002CF2B4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B400B5062DEF3DAB002CF2B4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B400B5082DEF4199002CF2B4 /* _config.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = _config.yml; sourceTree = "<group>"; };
 		B440D2512DD8976A0064B3BE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B440D2542DD899FF0064B3BE /* SettingsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnum.swift; sourceTree = "<group>"; };
 		B440D2582DDB512D0064B3BE /* SettingsEnumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnumModel.swift; sourceTree = "<group>"; };
@@ -146,6 +147,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B400B5072DEF3DAB002CF2B4 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				B400B5082DEF4199002CF2B4 /* _config.yml */,
+				B400B5062DEF3DAB002CF2B4 /* README.md */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
 		B440D2532DD899B70064B3BE /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,7 +273,7 @@
 		B4806FA32D9B8047004C952C = {
 			isa = PBXGroup;
 			children = (
-				B400B5052DEF0988002CF2B4 /* README.md */,
+				B400B5072DEF3DAB002CF2B4 /* docs */,
 				B45BB6FC2D9C152E008EA49E /* Test */,
 				B48070382D9BB678004C952C /* AIChat */,
 				B4A22C672DEAC7180091CB68 /* MarkdownUI */,
