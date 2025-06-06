@@ -72,7 +72,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B400B5062DEF3DAB002CF2B4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B400B5062DEF3DAB002CF2B4 /* README_zh.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_zh.md; sourceTree = "<group>"; };
 		B400B5082DEF4199002CF2B4 /* _config.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = _config.yml; sourceTree = "<group>"; };
 		B440D2512DD8976A0064B3BE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B440D2542DD899FF0064B3BE /* SettingsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnum.swift; sourceTree = "<group>"; };
@@ -115,6 +115,7 @@
 		B48070372D9BB678004C952C /* WindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowView.swift; sourceTree = "<group>"; };
 		B49731592DF1C55C004D9DCD /* DeepSeekService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepSeekService.swift; sourceTree = "<group>"; };
 		B497315B2DF1DA49004D9DCD /* MenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarExtraView.swift; sourceTree = "<group>"; };
+		B497315D2DF2F577004D9DCD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B49EFAC92DE4987200A59A87 /* MDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDView.swift; sourceTree = "<group>"; };
 		B4A22C572DEAC7180091CB68 /* MarkdownBlockquote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownBlockquote.swift; sourceTree = "<group>"; };
 		B4A22C582DEAC7180091CB68 /* MarkdownCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownCode.swift; sourceTree = "<group>"; };
@@ -155,7 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				B400B5082DEF4199002CF2B4 /* _config.yml */,
-				B400B5062DEF3DAB002CF2B4 /* README.md */,
+				B400B5062DEF3DAB002CF2B4 /* README_zh.md */,
+				B497315D2DF2F577004D9DCD /* README.md */,
 			);
 			path = docs;
 			sourceTree = "<group>";
