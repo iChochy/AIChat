@@ -75,6 +75,14 @@ struct ProviderEditorView: View {
                     Text(provider.title)
                 }
                 Spacer()
+                if let url = URL(string: provider.type.data.supportUrl) {
+                    Button {
+                        NSWorkspace.shared.open(url)
+                    } label: {
+                        Image(systemName: "safari")
+                    }.buttonBorderShape(.circle)
+                }
+                
             }
         }.padding()
             .padding(.horizontal)

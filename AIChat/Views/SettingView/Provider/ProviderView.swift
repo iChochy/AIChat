@@ -39,7 +39,7 @@ struct ProviderView: View {
                                     Image(systemName: "plus").foregroundStyle(
                                         Color.accentColor
                                     )
-                                    Text(item.name)
+                                    Text(item.data.title)
                                 }
                             }
                         }

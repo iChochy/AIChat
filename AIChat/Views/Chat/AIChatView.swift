@@ -17,21 +17,11 @@ struct AIChatView: View {
 
     var body: some View {
         VStack {
-            ZStack(alignment: .bottom) {
+            ZStack(alignment: .top) {
                 MessageListView(
                     messages: session.sortedMessages,
                 )
-                if !session.message.isEmpty {
-                    Text(session.message)
-                        .bold()
-                        .padding()
-                        .foregroundStyle(.red)
-                        .background(.black.opacity(0.5))
-                        .cornerRadius(50)
-                        .shadow(radius: 10)
-                        .padding()
-
-                }
+                CustomMessageView(message: $session.message)
             }
             InputAreaView(
                 userInput: $viewModel.userInput,
@@ -42,7 +32,6 @@ struct AIChatView: View {
         .onTapGesture {
             session.message = ""
         }
-        .animation(.default, value: session.message)
         .textSelection(.enabled)  // 允许选择文本
         .navigationTitle(session.title.isEmpty ? "New Chat" : session.title)
         .onAppear {

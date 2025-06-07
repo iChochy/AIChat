@@ -15,7 +15,7 @@ struct MessageListView: View {
     var body: some View {
         ScrollViewReader { proxy in
             ScrollView {
-                VStack(spacing: 10) {
+                LazyVStack(spacing: 10) {
                     ForEach(messages) { message in
                         ChatMessageView(message: message).id(message)
                     }
@@ -30,6 +30,8 @@ struct MessageListView: View {
     }
 
     private func scrollViewToBotton(proxy: ScrollViewProxy) {
-        proxy.scrollTo(messages.last, anchor: .bottom)
+        withAnimation(.default) {
+            proxy.scrollTo(messages.last, anchor: .bottom)
+        }
     }
 }

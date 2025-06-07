@@ -23,8 +23,8 @@ struct InputAreaView: View {
                 .frame(height: min(200, max(25, textHeight)))
                 .background(
                     Text(userInput.isEmpty ? "" : userInput)
-                        .foregroundColor(.clear)
                         .fixedSize(horizontal: false, vertical: true)
+                        .hidden()
                         .background(
                             GeometryReader { geometry in
                                 Color.clear.onAppear {
@@ -66,6 +66,7 @@ struct InputAreaView: View {
             RoundedRectangle(cornerRadius: 30)
                 .stroke(Color.gray.opacity(0.8), lineWidth: 2)
         )
+        .background(.quaternary)
         .background()
         .cornerRadius(30)
         .shadow(radius: 10)
