@@ -38,7 +38,7 @@ struct AIChatView: View {
             viewModel.setup(modelContext: modelContext, session: session)
         }.toolbar {
             ToolbarItem {
-                Menu(getModelName()) {
+                Menu(getSessionModelName()) {
                     ForEach(providers) { provider in
                         Menu(provider.title) {
                             ForEach(provider.models) { model in
@@ -62,7 +62,10 @@ struct AIChatView: View {
         try? modelContext.save()
     }
 
-    private func getModelName() -> String {
+    
+    /// 获取会话模型的名称
+    /// - Returns: 模型名称
+    private func getSessionModelName() -> String {
         guard let model = session.model else {
             return "Select Model"
         }

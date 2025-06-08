@@ -37,7 +37,7 @@ struct AIContentView: View {
                         }
                 }
                 VStack {
-                    Menu(getSelectName()) {
+                    Menu(getDefaultModelName()) {
                         ForEach(providers) { provider in
                             Menu(provider.title) {
                                 ForEach(provider.models) { model in
@@ -85,7 +85,7 @@ struct AIContentView: View {
                             isShwoError = false
                         }
                     } message: {
-                        Text("Please select model").foregroundColor(.red)
+                        Text("Please select default model").foregroundColor(.red)
                     }
                 }
             }
@@ -137,8 +137,8 @@ struct AIContentView: View {
 
     /// 获取默认模型的名字
     /// - Returns: 默认模型的名字
-    private func getSelectName() -> String {
-        var name = "Select Model"
+    private func getDefaultModelName() -> String {
+        var name = "Select Default Model"
         if let model = getDefaultModel() {
             name = model.name
         }

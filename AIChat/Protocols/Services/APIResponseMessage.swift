@@ -28,7 +28,7 @@ struct Delta: Decodable {
 // 验证响应
 func validateResponse(_ response: URLResponse) throws {
     guard let httpResponse = response as? HTTPURLResponse else {
-        throw AIError.invalidResponse
+        throw AIError.InvalidResponse
     }
     guard (200...299).contains(httpResponse.statusCode) else {
         print(httpResponse.statusCode)
@@ -39,23 +39,11 @@ func validateResponse(_ response: URLResponse) throws {
 
 // 错误类型
 enum AIError: LocalizedError {
-    case missingProvider
-    case wrongAPIURL
-    case invalidResponse
-    case apiError(statusCode: Int)
+    case MissingProvider
+    case WrongAPIURL
+    case InvalidResponse
+    case SystemError
 
-    var errorDescription: String? {
-        switch self {
-        case .missingProvider:
-            return "Provider 未设置"
-        case .wrongAPIURL:
-            return "API URL 错误"
-        case .invalidResponse:
-            return "无效的服务器响应"
-        case .apiError(let statusCode):
-            return "API 请求失败 (状态码 \(statusCode))"
-        }
-    }
 }
 
 enum StatusError: Int, LocalizedError {
@@ -112,6 +100,7 @@ enum StatusError: Int, LocalizedError {
 struct ModelResponse: Codable {
     let data: [Model]
 }
+
 struct Model: Codable, Identifiable {
     var id: String
     //Gemini 统一修改

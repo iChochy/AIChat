@@ -56,23 +56,28 @@ class ChatViewModel: ObservableObject {
     }
 
     private func handleAIResponse() async {
+        defer{
+            isSending = false
+        }
         guard let modelContext = modelContext else {
             return
         }
-
+        
         guard let session = session else {
             return
         }
+
         guard let model = session.model else {
+            session.message = "Please select model!"
             return
         }
 
         guard let provider = model.provider else {
+            session.message =  String(describing: AIError.MissingProvider)
             return
         }
 
-        do {
-            
+        do {            
             let stream = try await provider.type.data.service.streamChatResponse(
                 model: model,
                 messages: session.sortedMessages
@@ -127,9 +132,11 @@ class ChatViewModel: ObservableObject {
             modelContext.insert(assistantMessage)
             try? modelContext.save()
         } catch {
-            session.message = "Error: \(error.localizedDescription)"
+//            session.message = "Error: \(error.localizedDescription)"
+            session.message = String(describing: error)
         }
-        isSending = false
+        
+        
 
     }
 

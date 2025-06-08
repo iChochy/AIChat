@@ -47,6 +47,8 @@
 		B497315A2DF1C55C004D9DCD /* DeepSeekService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49731592DF1C55C004D9DCD /* DeepSeekService.swift */; };
 		B497315C2DF1DA49004D9DCD /* MenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B497315B2DF1DA49004D9DCD /* MenuBarExtraView.swift */; };
 		B497315F2DF34C54004D9DCD /* CustomMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B497315E2DF34C54004D9DCD /* CustomMessageView.swift */; };
+		B49731612DF46B9C004D9DCD /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49731602DF46B9C004D9DCD /* CustomButtonView.swift */; };
+		B49731632DF55EF0004D9DCD /* TOCToolbarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49731622DF55EF0004D9DCD /* TOCToolbarItemView.swift */; };
 		B49EFACA2DE4987200A59A87 /* MDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49EFAC92DE4987200A59A87 /* MDView.swift */; };
 		B4A22C682DEAC7180091CB68 /* MarkdownTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A22C5F2DEAC7180091CB68 /* MarkdownTable.swift */; };
 		B4A22C692DEAC7180091CB68 /* MarkdownHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A22C5A2DEAC7180091CB68 /* MarkdownHeader.swift */; };
@@ -118,6 +120,8 @@
 		B497315B2DF1DA49004D9DCD /* MenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarExtraView.swift; sourceTree = "<group>"; };
 		B497315D2DF2F577004D9DCD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B497315E2DF34C54004D9DCD /* CustomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageView.swift; sourceTree = "<group>"; };
+		B49731602DF46B9C004D9DCD /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		B49731622DF55EF0004D9DCD /* TOCToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOCToolbarItemView.swift; sourceTree = "<group>"; };
 		B49EFAC92DE4987200A59A87 /* MDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDView.swift; sourceTree = "<group>"; };
 		B4A22C572DEAC7180091CB68 /* MarkdownBlockquote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownBlockquote.swift; sourceTree = "<group>"; };
 		B4A22C582DEAC7180091CB68 /* MarkdownCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownCode.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 				B457E8962DBFA80E00598C36 /* AIChatView.swift */,
 				B44725D02DC1FA8A00B9B31B /* InputAreaView.swift */,
 				B44725CC2DC1FA6300B9B31B /* MessageListView.swift */,
+				B49731622DF55EF0004D9DCD /* TOCToolbarItemView.swift */,
 				B457E8922DBFA7DC00598C36 /* ChatMessageView.swift */,
 				B4FECCFB2DE9E34600820ADE /* ChatReasoningView.swift */,
 				B4FECD012DE9F10900820ADE /* ChatContentView.swift */,
@@ -327,6 +332,7 @@
 			children = (
 				B440D2762DDF89CF0064B3BE /* CustomSearchView.swift */,
 				B497315E2DF34C54004D9DCD /* CustomMessageView.swift */,
+				B49731602DF46B9C004D9DCD /* CustomButtonView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -479,6 +485,7 @@
 				B497315F2DF34C54004D9DCD /* CustomMessageView.swift in Sources */,
 				B440D2592DDB512D0064B3BE /* SettingsEnumModel.swift in Sources */,
 				B457E88D2DBFA72000598C36 /* AIChatProtocol.swift in Sources */,
+				B49731632DF55EF0004D9DCD /* TOCToolbarItemView.swift in Sources */,
 				B440D2522DD8976A0064B3BE /* SettingsView.swift in Sources */,
 				B440D2612DDB83200064B3BE /* AIProvider.swift in Sources */,
 				B440D2552DD899FF0064B3BE /* SettingsEnum.swift in Sources */,
@@ -510,6 +517,7 @@
 				B48070412D9BB678004C952C /* WindowContentView.swift in Sources */,
 				B457E8892DBFA6DA00598C36 /* ChatRoleEnum.swift in Sources */,
 				B457E88B2DBFA6EA00598C36 /* ChatSession.swift in Sources */,
+				B49731612DF46B9C004D9DCD /* CustomButtonView.swift in Sources */,
 				B4A22C792DEC5E460091CB68 /* AppearanceEnum.swift in Sources */,
 				B44725D12DC1FA8A00B9B31B /* InputAreaView.swift in Sources */,
 				B44725CD2DC1FA6300B9B31B /* MessageListView.swift in Sources */,

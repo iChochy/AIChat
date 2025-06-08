@@ -1,5 +1,5 @@
 //
-//  CustomSearchView.swift
+//  CustomMessageView.swift
 //  AIChat
 //
 //  Created by Lion on 2025/5/23.

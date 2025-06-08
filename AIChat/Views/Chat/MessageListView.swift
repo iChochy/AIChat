@@ -15,23 +15,42 @@ struct MessageListView: View {
     var body: some View {
         ScrollViewReader { proxy in
             ScrollView {
-                LazyVStack(spacing: 10) {
+                VStack(spacing: 10) {
                     ForEach(messages) { message in
                         ChatMessageView(message: message).id(message)
                     }
                 }
                 .padding()
-            }.onChange(of: messages.count) {
-                scrollViewToBotton(proxy: proxy)
+            }.onChange(of: messages) { oldValue, newValue in
+                if oldValue.count < newValue.count {
+                    scrollView(
+                        proxy: proxy,
+                        message: messages.last,
+                        anchor: .bottom
+                    )
+                }
             }.onAppear {
-                scrollViewToBotton(proxy: proxy)
+                scrollView(
+                    proxy: proxy,
+                    message: messages.last,
+                    anchor: .bottom
+                )
             }.scrollClipDisabled()
+                .toolbar {
+                    if messages.count > 0 {
+                        TOCToolbarItemView(messages: messages, proxy: proxy)
+                    }
+                }
         }
     }
 
-    private func scrollViewToBotton(proxy: ScrollViewProxy) {
-        withAnimation(.default) {
-            proxy.scrollTo(messages.last, anchor: .bottom)
-        }
+    private func scrollView(
+        proxy: ScrollViewProxy,
+        message: ChatMessage?,
+        anchor: UnitPoint
+    ) {
+        proxy.scrollTo(message, anchor: anchor)
     }
+    
+
 }

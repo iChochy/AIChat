@@ -10,7 +10,6 @@ import Foundation
 /// Gemini 客户端实现
 class GeminiService: AIChatProtocol {
     
-    
     private let chatPath = "/v1beta/openai/chat/completions"
     private let modelPath = "/v1beta/openai/models"
     private let session: URLSession = .shared
@@ -21,7 +20,7 @@ class GeminiService: AIChatProtocol {
 
     func getModels(provider: AIProvider) async throws -> [Model] {
         guard let APIURL = URL(string: provider.APIURL + modelPath) else {
-            throw AIError.wrongAPIURL
+            throw AIError.WrongAPIURL
         }
         // 构建请求
         var request = URLRequest(url: APIURL)
@@ -52,12 +51,12 @@ class GeminiService: AIChatProtocol {
         messages: [ChatMessage]
     ) async throws -> AsyncThrowingStream<Delta, Error>  {
         guard let provider = model.provider else{
-            throw AIError.missingProvider
+            throw AIError.MissingProvider
         }
         guard
             let APIURL = URL(string: provider.APIURL + chatPath)
         else {
-            throw AIError.wrongAPIURL
+            throw AIError.WrongAPIURL
         }
         // 构建请求
         var request = URLRequest(url: APIURL)

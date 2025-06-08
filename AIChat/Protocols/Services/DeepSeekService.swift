@@ -18,7 +18,7 @@ class DeepSeekService: AIChatProtocol {
 
     func getModels(provider: AIProvider) async throws -> [Model] {
         guard let APIURL = URL(string: provider.APIURL + modelPath) else {
-            throw AIError.wrongAPIURL
+            throw AIError.WrongAPIURL
         }
         // 构建请求
         var request = URLRequest(url: APIURL)
@@ -49,12 +49,12 @@ class DeepSeekService: AIChatProtocol {
         messages: [ChatMessage]
     ) async throws -> AsyncThrowingStream<Delta, Error>  {
         guard let provider = model.provider else{
-            throw AIError.missingProvider
+            throw AIError.MissingProvider
         }
         guard
             let APIURL = URL(string: provider.APIURL + chatPath)
         else {
-            throw AIError.wrongAPIURL
+            throw AIError.WrongAPIURL
         }
         // 构建请求
         var request = URLRequest(url: APIURL)
