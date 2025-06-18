@@ -9,7 +9,8 @@ import SwiftData
 import SwiftUI
 
 // MARK: - Message List View
-struct MessageListView: View {
+struct SessionDetailView: View {
+    @Environment(\.modelContext) private var modelContext
     let messages: [ChatMessage]
 
     var body: some View {

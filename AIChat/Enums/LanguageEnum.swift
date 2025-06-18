@@ -6,13 +6,13 @@
 //
 
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 enum LanguageEnum: String, CaseIterable, Identifiable, Hashable {
     case auto = "Auto"
     case chinese = "中文"
     case english = "English"
-    // Conformance to Identifiable protocol for ForEach
+
     var id: Self { self }
 
     var content: String {

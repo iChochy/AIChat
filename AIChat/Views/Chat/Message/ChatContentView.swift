@@ -29,11 +29,11 @@ struct ChatContentView: View {
                     .cornerRadius(30)
             case .assistant:
                 Markdown(toMarkdown(), lazy: true)
-                    .padding()
-                    .fixedSize(horizontal: false, vertical: true)
-                    .background(messageBackgroundColor)
-                    .foregroundStyle(messageForegroundColor)
-                    .cornerRadius(30)
+//                    .padding()
+//                    .fixedSize(horizontal: false, vertical: true)
+//                    .background(messageBackgroundColor)
+//                    .foregroundStyle(messageForegroundColor)
+//                    .cornerRadius(30)
             }
         }
     }

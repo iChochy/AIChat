@@ -11,23 +11,19 @@ import SwiftUI
 // MARK: - View Model
 @MainActor
 class ChatViewModel: ObservableObject {
+    private var modelContext:ModelContext?
+    private var session:ChatSession?
+    @AppStorage("language") var language = LanguageEnum.auto
     @Published var userInput: String = ""
     @Published var isSending: Bool = false
     @AppStorage("nickname") var nickname = "AI Chat"
+    
 
-    private var modelContext: ModelContext?
-    private var session: ChatSession?
-
-    func setup(modelContext: ModelContext, session: ChatSession) {
-        self.modelContext = modelContext
-        self.session = session
-    }
-
-    func sendMessage() {
+    func sendMessage(session:ChatSession,modelContext:ModelContext) {
         let userContent = userInput.trimmingCharacters(
             in: .whitespacesAndNewlines
         )
-        guard let session = session, let modelContext = modelContext,
+        guard
             !userContent.isEmpty,
             !isSending
         else { return }
@@ -51,21 +47,15 @@ class ChatViewModel: ObservableObject {
         try? modelContext.save()
 
         Task {
-            await handleAIResponse()
+            await handleAIResponse(session: session,modelContext:modelContext)
         }
     }
 
-    private func handleAIResponse() async {
+    private func handleAIResponse(session:ChatSession,modelContext:ModelContext) async {
         defer{
             isSending = false
         }
-        guard let modelContext = modelContext else {
-            return
-        }
-        
-        guard let session = session else {
-            return
-        }
+
 
         guard let model = session.model else {
             session.message = "Please select model!"
@@ -132,7 +122,6 @@ class ChatViewModel: ObservableObject {
             modelContext.insert(assistantMessage)
             try? modelContext.save()
         } catch {
-//            session.message = "Error: \(error.localizedDescription)"
             session.message = String(describing: error)
         }
         

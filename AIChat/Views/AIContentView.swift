@@ -13,7 +13,7 @@ struct AIContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.openWindow) private var openWindow
     @State private var selectedSession: ChatSession?
-    @State private var isShwoError = false
+    @State private var isShowError = false
 
     @Query(filter: #Predicate<AIModel> { $0.isDefault == true })
     private var models: [AIModel] = []
@@ -27,14 +27,11 @@ struct AIContentView: View {
         NavigationSplitView {
             Divider()
             VStack {
-                List(sessions, selection: $selectedSession) { session in
-                    Text(session.title.isEmpty ? "New Chat" : session.title)
-                        .tag(session)  // 重要: 使用 id 作为 tag
-                        .contextMenu {  // 右键菜单删除
-                            Button("Delete Chat") {
-                                deleteSession(session)
-                            }
-                        }
+                List(selection: $selectedSession) {
+                    AssistantSideView { assistant in
+                        createNewSession(assistant: assistant)
+                    }
+                    SessionSideView()
                 }
                 VStack {
                     Menu(getDefaultModelName()) {
@@ -70,50 +67,47 @@ struct AIContentView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
-                        if let model = getDefaultModel() {
-                            createNewSession(
-                                model: model
-                            )
-                        } else {
-                            isShwoError = true
-                        }
+                        createNewSession()
                     } label: {
                         Label("New Chat", systemImage: "plus.bubble")
                             .foregroundStyle(Color.accentColor)
-                    }.alert("Error", isPresented: $isShwoError) {
+                    }.alert("Error", isPresented: $isShowError) {
                         Button("OK") {
-                            isShwoError = false
+                            isShowError = false
                         }
                     } message: {
-                        Text("Please select default model").foregroundColor(.red)
+                        Text("Please select default model").foregroundColor(
+                            .red
+                        )
                     }
                 }
             }
 
         } detail: {
             if let session = selectedSession {
-                AIChatView(session: session)
+                ChatSessionView(session: session)
                     .id(session)  // 重要: 当 sessionId 改变时，强制刷新 ChatView
-            } else {
-                Text("Select or create a chat session.")
-                    .font(.title)
-                    .foregroundColor(.secondary)
             }
+        }.onAppear {
+            createNewSession()
         }
     }
 
     /// 创建系统信息
     /// - Parameter session: Session
+    ///
     private func createSystemMessage(session: ChatSession) {
         guard language != .auto else {
             return
         }
-        _ = ChatMessage(
-            modelName: "System",
+        let systemMessage = ChatMessage(
+            modelName: ChatRoleEnum.system.rawValue,
             content: language.content,
             role: .system,
             session: session
         )
+        modelContext.insert(systemMessage)
+        try? modelContext.save()
     }
 
     /// 设置默认模型
@@ -145,31 +139,60 @@ struct AIContentView: View {
         return name
     }
 
-    // 创建新会话
-    private func createNewSession(model: AIModel) {
-        if let session = sessions.first(where: { $0.title.isEmpty }) {
-            selectedSession = session
+    private func createNewSession(assistant: Assistant) {
+        if let model = assistant.model {
+            createNewSession(model: model, assistant: assistant)
             return
         }
+        if let model = getDefaultModel() {
+            createNewSession(model: model, assistant: assistant)
+            return
+        }
+        isShowError = true
+    }
 
+    private func createNewSession() {
+        if let model = getDefaultModel() {
+            let session = createNewSession(
+                model: model
+            )
+            selectedSession = session
+        } else {
+            isShowError = true
+        }
+    }
+
+    @MainActor
+    private func createNewSession(model: AIModel, assistant: Assistant) {
+        let session = createNewSession(model: model)
+        if let model = assistant.model {
+            session.model = model
+        }
+        if !assistant.prompt.isEmpty {
+            let promptMessage = ChatMessage(
+                modelName: ChatRoleEnum.system.rawValue,
+                content: assistant.prompt,
+                role: .system,
+                session: session
+            )
+            modelContext.insert(promptMessage)
+//            try? modelContext.save()
+        }
+        selectedSession = session
+    }
+    // 创建新会话
+
+    @MainActor
+    private func createNewSession(model: AIModel) -> ChatSession {
+        if let session = sessions.first(where: { $0.title.isEmpty }) {
+            modelContext.delete(session)
+            try? modelContext.save()  // 保存以获取持久化 ID
+        }
         let newSession = ChatSession(model: model)
-        createSystemMessage(session: newSession)
         modelContext.insert(newSession)
-        do {
-            try modelContext.save()  // 保存以获取持久化 ID
-            selectedSession = newSession  // 选中新创建的会话
-        } catch {
-            print("Error saving new session: \(error)")
-        }
+        createSystemMessage(session: newSession)
+        try? modelContext.save()  // 保存以获取持久化 ID
+        return newSession
     }
 
-    // 删除会话
-    private func deleteSession(_ session: ChatSession) {
-        // 如果删除的是当前选中的会话，取消选中
-        if selectedSession == session {
-            selectedSession = nil
-        }
-        modelContext.delete(session)
-        try? modelContext.save()
-    }
 }

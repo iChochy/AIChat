@@ -10,19 +10,19 @@ import SwiftUI
 
 // MARK: - Input Area View
 struct InputAreaView: View {
-    @Binding var userInput: String
+    @Environment(\.modelContext) private var modelContext
+    @StateObject var chatViewModel:ChatViewModel = ChatViewModel()
     @State private var textHeight: CGFloat = 0
-    let isSending: Bool
-    let sendAction: () -> Void
-
+    @Bindable var session:ChatSession
+    
     var body: some View {
         HStack(alignment: .bottom) {
-            TextEditor(text: $userInput)
+            TextEditor(text: $chatViewModel.userInput)
                 .scrollContentBackground(.hidden)
-                .disabled(isSending)
+                .disabled(chatViewModel.isSending)
                 .frame(height: min(200, max(25, textHeight)))
                 .background(
-                    Text(userInput.isEmpty ? "" : userInput)
+                    Text(chatViewModel.userInput.isEmpty ? "" : chatViewModel.userInput)
                         .fixedSize(horizontal: false, vertical: true)
                         .hidden()
                         .background(
@@ -31,7 +31,7 @@ struct InputAreaView: View {
                                     textHeight = geometry.size.height
                                 }
                                 .onChange(
-                                    of: userInput,
+                                    of: chatViewModel.userInput,
                                     {
                                         textHeight = geometry.size.height
                                     }
@@ -43,8 +43,10 @@ struct InputAreaView: View {
                 .padding()
                 .font(.title)
                 .scrollIndicators(.hidden)
-            Button(action: sendAction) {
-                    if isSending {
+            Button {
+                sendMessage()
+            }label: {
+                if chatViewModel.isSending {
                         ZStack{
                             ProgressView()
                             Image(systemName: "arrow.up.circle.fill")
@@ -57,8 +59,8 @@ struct InputAreaView: View {
             }
             .keyboardShortcut(.return, modifiers: .command)
             .disabled(
-                userInput.trimmingCharacters(in: .whitespacesAndNewlines)
-                    .isEmpty || isSending
+                chatViewModel.userInput.trimmingCharacters(in: .whitespacesAndNewlines)
+                    .isEmpty || chatViewModel.isSending
             )
             .buttonStyle(.link)
         }
@@ -72,5 +74,9 @@ struct InputAreaView: View {
         .shadow(radius: 10)
         .padding(.bottom)
         .padding(.horizontal,50)
+    }
+    
+    func sendMessage(){
+        chatViewModel.sendMessage(session: session,modelContext: modelContext)
     }
 }

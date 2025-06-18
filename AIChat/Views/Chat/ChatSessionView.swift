@@ -7,27 +7,17 @@ import SwiftData
 //
 import SwiftUI
 
-struct AIChatView: View {
+struct ChatSessionView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var providers: [AIProvider] = []
 
     @Bindable var session: ChatSession
 
-    @StateObject private var viewModel = ChatViewModel()
 
     var body: some View {
         VStack {
-            ZStack(alignment: .top) {
-                MessageListView(
-                    messages: session.sortedMessages,
-                )
-                CustomMessageView(message: $session.message)
-            }
-            InputAreaView(
-                userInput: $viewModel.userInput,
-                isSending: viewModel.isSending,
-                sendAction: viewModel.sendMessage
-            )
+            SessionView(session: session)
+            InputAreaView(session:session)
         }
         .onTapGesture {
             session.message = ""
@@ -35,7 +25,7 @@ struct AIChatView: View {
         .textSelection(.enabled)  // 允许选择文本
         .navigationTitle(session.title.isEmpty ? "New Chat" : session.title)
         .onAppear {
-            viewModel.setup(modelContext: modelContext, session: session)
+//            viewModel.setup(modelContext: modelContext, session: session)
         }.toolbar {
             ToolbarItem {
                 Menu(getSessionModelName()) {
@@ -62,7 +52,6 @@ struct AIChatView: View {
         try? modelContext.save()
     }
 
-    
     /// 获取会话模型的名称
     /// - Returns: 模型名称
     private func getSessionModelName() -> String {
@@ -71,5 +60,4 @@ struct AIChatView: View {
         }
         return model.name
     }
-
 }

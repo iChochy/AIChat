@@ -16,9 +16,10 @@ struct AIChatApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             ChatSession.self,
+            ChatMessage.self,
             AIProvider.self,
-            MarkdownCategory.self,
-            MarkdownItem.self,
+            AIModel.self,
+            Assistant.self
         ])
         let modelConfiguration = ModelConfiguration(
             schema: schema,
@@ -37,7 +38,8 @@ struct AIChatApp: App {
     var body: some Scene {
         WindowGroup(id: "Chat") {
             //            MarkdownParserView()
-            AIContentView()
+            //            AssistantView()
+                        AIContentView()
                 .onAppear(perform: {
                     NSApp.appearance = appearance.name
                 }).onChange(
@@ -58,6 +60,19 @@ struct AIChatApp: App {
 
         Window("Settings", id: "Settings") {  // 给窗口一个标题和 ID
             SettingsView()
+                .onAppear(perform: {
+                    NSApp.appearance = appearance.name
+                }).onChange(
+                    of: appearance,
+                    {
+                        NSApp.appearance = appearance.name
+                    }
+                )
+                .frame(minWidth: 600, minHeight: 400)  // 可以设置最小尺寸
+        }.modelContainer(sharedModelContainer)
+        
+        Window("Assistant", id: "Assistant") {  // 给窗口一个标题和 ID
+            AssistantView()
                 .onAppear(perform: {
                     NSApp.appearance = appearance.name
                 }).onChange(
