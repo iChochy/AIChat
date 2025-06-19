@@ -47,8 +47,10 @@ class GeminiService: AIChatProtocol {
     
     
     func streamChatResponse(
+        provider:AIProvider,
         model: AIModel,
-        messages: [ChatMessage]
+        messages: [ChatMessage],
+        temperature:Double
     ) async throws -> AsyncThrowingStream<Delta, Error>  {
         guard let provider = model.provider else{
             throw AIError.MissingProvider
@@ -76,6 +78,7 @@ class GeminiService: AIChatProtocol {
             messages: messages.map({ message in
                 message.apiRepresentation
             }),
+            temperature: temperature,
             stream: true
         )
         request.httpBody = try JSONEncoder().encode(requestBody)

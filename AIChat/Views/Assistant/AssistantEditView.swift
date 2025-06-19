@@ -38,7 +38,8 @@ struct AssistantEditView: View {
                     HStack {
                         Slider(
                             value: $assistant.temperature,
-                            in: 0...2
+                            in: 0...2,
+                            step: 0.1
                         ) {
                             Text("Temperature")
                         }

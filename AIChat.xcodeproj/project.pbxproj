@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1045A4552DFF16140062042A /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045A4542DFF16140062042A /* SessionView.swift */; };
+		10C9F6AD2E05295A00A8719E /* ResponseContentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9F6AC2E05295A00A8719E /* ResponseContentHelper.swift */; };
 		B42DB27F2DFA8C1A005EF8BE /* AssistantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42DB27E2DFA8C1A005EF8BE /* AssistantView.swift */; };
 		B42DB2812DFA8F7B005EF8BE /* AssistantEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42DB2802DFA8F7B005EF8BE /* AssistantEditView.swift */; };
 		B42DB2852DFB0372005EF8BE /* AssistantAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42DB2842DFB0372005EF8BE /* AssistantAddView.swift */; };
@@ -87,6 +88,7 @@
 
 /* Begin PBXFileReference section */
 		1045A4542DFF16140062042A /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		10C9F6AC2E05295A00A8719E /* ResponseContentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseContentHelper.swift; sourceTree = "<group>"; };
 		B400B5062DEF3DAB002CF2B4 /* README_zh.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_zh.md; sourceTree = "<group>"; };
 		B400B5082DEF4199002CF2B4 /* _config.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = _config.yml; sourceTree = "<group>"; };
 		B42DB27E2DFA8C1A005EF8BE /* AssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10C9F6AB2E0528AB00A8719E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				10C9F6AC2E05295A00A8719E /* ResponseContentHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		B400B5072DEF3DAB002CF2B4 /* docs */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +378,7 @@
 				B457E8612DB3F0B800598C36 /* Views */,
 				B457E8982DBFA87C00598C36 /* Models */,
 				B457E8992DBFA89C00598C36 /* Enums */,
+				10C9F6AB2E0528AB00A8719E /* Helper */,
 				B457E89C2DBFA9BD00598C36 /* Protocols */,
 				B480702E2D9BB678004C952C /* AIChat.entitlements */,
 				B48070312D9BB678004C952C /* Assets.xcassets */,
@@ -540,6 +551,7 @@
 				B440D2522DD8976A0064B3BE /* SettingsView.swift in Sources */,
 				B440D2612DDB83200064B3BE /* AIProvider.swift in Sources */,
 				1045A4552DFF16140062042A /* SessionView.swift in Sources */,
+				10C9F6AD2E05295A00A8719E /* ResponseContentHelper.swift in Sources */,
 				B497317B2DF856C6004D9DCD /* AssistantSideView.swift in Sources */,
 				B440D2552DD899FF0064B3BE /* SettingsEnum.swift in Sources */,
 				B497315C2DF1DA49004D9DCD /* MenuBarExtraView.swift in Sources */,
@@ -728,7 +740,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AIChat/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -764,7 +776,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AIChat/Preview Content\"";
 				DEVELOPMENT_TEAM = "";

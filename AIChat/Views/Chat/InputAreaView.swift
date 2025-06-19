@@ -11,56 +11,62 @@ import SwiftUI
 // MARK: - Input Area View
 struct InputAreaView: View {
     @Environment(\.modelContext) private var modelContext
-    @StateObject var chatViewModel:ChatViewModel = ChatViewModel()
+    @StateObject var chatViewModel: ChatViewModel = ChatViewModel()
     @State private var textHeight: CGFloat = 0
-    @Bindable var session:ChatSession
-    
+    @Bindable var session: ChatSession
+
     var body: some View {
-        HStack(alignment: .bottom) {
+        HStack(alignment: .bottom, spacing: 0) {
             TextEditor(text: $chatViewModel.userInput)
                 .scrollContentBackground(.hidden)
                 .disabled(chatViewModel.isSending)
-                .frame(height: min(200, max(25, textHeight)))
+                .frame(height: min(200, max(20, textHeight)))
                 .background(
-                    Text(chatViewModel.userInput.isEmpty ? "" : chatViewModel.userInput)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .hidden()
-                        .background(
-                            GeometryReader { geometry in
-                                Color.clear.onAppear {
+                    Text(
+                        chatViewModel.userInput.isEmpty
+                            ? "" : chatViewModel.userInput
+                    )
+                    .fixedSize(horizontal: false, vertical: true)
+                    .hidden()
+                    .background(
+                        GeometryReader { geometry in
+                            Color.clear.onAppear {
+                                textHeight = geometry.size.height
+                            }
+                            .onChange(
+                                of: chatViewModel.userInput,
+                                {
                                     textHeight = geometry.size.height
                                 }
-                                .onChange(
-                                    of: chatViewModel.userInput,
-                                    {
-                                        textHeight = geometry.size.height
-                                    }
-                                )
-                            }
-                        )
-                        .allowsHitTesting(false)
+                            )
+                        }
+                    )
+                    .allowsHitTesting(false)
                 )
                 .padding()
-                .font(.title)
+                .font(.title2)
+                .bold()
                 .scrollIndicators(.hidden)
             Button {
                 sendMessage()
-            }label: {
+            } label: {
                 if chatViewModel.isSending {
-                        ZStack{
-                            ProgressView()
-                            Image(systemName: "arrow.up.circle.fill")
-                                .font(.system(size: 50)).hidden()
-                        }
-                    } else {
+                    ZStack {
+                        ProgressView()
                         Image(systemName: "arrow.up.circle.fill")
-                            .font(.system(size: 50))
+                            .font(.system(size: 45)).hidden()
                     }
+                } else {
+                    Image(systemName: "arrow.up.circle.fill")
+                        .font(.system(size: 45))
+                }
             }
             .keyboardShortcut(.return, modifiers: .command)
             .disabled(
-                chatViewModel.userInput.trimmingCharacters(in: .whitespacesAndNewlines)
-                    .isEmpty || chatViewModel.isSending
+                chatViewModel.userInput.trimmingCharacters(
+                    in: .whitespacesAndNewlines
+                )
+                .isEmpty || chatViewModel.isSending
             )
             .buttonStyle(.link)
         }
@@ -71,12 +77,11 @@ struct InputAreaView: View {
         .background(.quaternary)
         .background()
         .cornerRadius(30)
-        .shadow(radius: 10)
         .padding(.bottom)
-        .padding(.horizontal,50)
+        .padding(.horizontal, 50)
     }
-    
-    func sendMessage(){
-        chatViewModel.sendMessage(session: session,modelContext: modelContext)
+
+    func sendMessage() {
+        chatViewModel.sendMessage(session: session, modelContext: modelContext)
     }
 }

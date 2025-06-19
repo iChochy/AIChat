@@ -20,6 +20,9 @@ final class AIModel {
     @Relationship(deleteRule: .nullify, inverse: \ChatSession.model)
     var sessions: [ChatSession] = []
     
+    @Relationship(deleteRule: .nullify, inverse: \Assistant.model)
+    var assistant: Assistant?
+    
     var createdAt: Date = Date()
     
     init(name: String,provider:AIProvider) {

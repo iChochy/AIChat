@@ -13,8 +13,8 @@ import SwiftData
 final class ChatSession {
     var id: UUID = UUID()
     var title: String = ""
-    
     var message:String = ""
+    var temperature:Double = 1.0
     
     var model: AIModel?
 

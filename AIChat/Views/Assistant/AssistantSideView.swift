@@ -12,11 +12,11 @@ struct AssistantSideView: View {
     @Environment(\.openWindow) private var openWindow
     
     
-    @State private var selectedId:[UUID:Bool] = [:]
+    @State private var selectedItem:[UUID:Bool] = [:]
 
     @Query(filter: #Predicate<Assistant> { $0.isFavorite == true })
     var assistants: [Assistant] = []
-
+    
     var createSession: (Assistant) -> Void
     let assistant = Assistant()
 
@@ -29,14 +29,16 @@ struct AssistantSideView: View {
                     Text("Ask AI Chat")
                     Spacer()
                 }.padding(5)
-                    .background(selectedId[assistant.id] ?? false ? Color.blue : Color.clear)
+                    .background(selectedItem[assistant.id] ?? false ? Color.blue : Color.clear)
+                    .foregroundColor(selectedItem[assistant.id] ?? false ? .white : .primary)
                     .cornerRadius(5)
             }.buttonStyle(.plain)
                 .onHover { hover in
-                    selectedId[assistant.id] = hover
+                    selectedItem[assistant.id] = hover
                 }
             ForEach(assistants) { item in
                 Button {
+                    selectedItem[item.id] = false
                     createSession(item)
                 } label: {
                     HStack{
@@ -45,18 +47,19 @@ struct AssistantSideView: View {
                         Button {
                             item.isFavorite.toggle()
                         } label: {
-                            Image(systemName: "heart.slash")
+                            Image(systemName: "heart.slash.circle")
                         }.buttonStyle(.plain)
                             .help("Cancel Favorites")
                             .shadow(radius: 10)
                     }
                     .padding(5)
-                        .background(selectedId[item.id] ?? false ? Color.blue : Color.clear)
+                        .background(selectedItem[item.id] ?? false ? Color.blue : Color.clear)
+                        .foregroundColor(selectedItem[item.id] ?? false ? .white : .primary)
                         .cornerRadius(5)
                 }
                 .buttonStyle(.plain)
                 .onHover { hover in
-                        selectedId[item.id] = hover
+                        selectedItem[item.id] = hover
                 }
             }
         } header: {
@@ -69,7 +72,6 @@ struct AssistantSideView: View {
                     Image(systemName: "ellipsis")
                 }.buttonBorderShape(.circle)
                     .help("All assistant information")
-                    .shadow(radius: 10)
             }
         }
     }

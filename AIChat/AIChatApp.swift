@@ -81,7 +81,7 @@ struct AIChatApp: App {
                         NSApp.appearance = appearance.name
                     }
                 )
-                .frame(minWidth: 600, minHeight: 400)  // 可以设置最小尺寸
+                .frame(minWidth: 400, minHeight: 400)  // 可以设置最小尺寸
         }.modelContainer(sharedModelContainer)
 
         // 定义你的置顶窗口场景

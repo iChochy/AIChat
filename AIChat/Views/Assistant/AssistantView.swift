@@ -42,7 +42,7 @@ struct AssistantView: View {
                     ForEach(assistants) { item in
                         HStack {
                             Image(systemName: "bookmark.circle")
-                                .font(.system(size: 60))
+                                .font(.system(size: 40))
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text(item.title)
@@ -54,7 +54,7 @@ struct AssistantView: View {
                                     }
                                 }
                                 Divider()
-                                Text(item.prompt).lineLimit(2)
+                                Text(item.prompt).lineLimit(1)
                             }
                             VStack(spacing: 5) {
                                 Button {
@@ -62,7 +62,7 @@ struct AssistantView: View {
                                 } label: {
                                     Image(
                                         systemName: item.isFavorite
-                                        ? "heart.slash" : "heart"
+                                        ? "heart.slash.circle" : "heart.circle"
                                     )
                                 }.help(
                                     item.isFavorite
@@ -71,17 +71,17 @@ struct AssistantView: View {
                                 Button {
                                     editAssistant = item
                                 } label: {
-                                    Image(systemName: "pencil")
+                                    Image(systemName: "pencil.circle")
                                 }.help("Edit assistant")
                                     .padding(.leading, 30)
                                 Button {
                                     deleteAssistant(assistant: item)
                                 } label: {
-                                    Image(systemName: "minus")
+                                    Image(systemName: "minus.circle")
                                 }.help("Delete assistant")
-                            }.buttonBorderShape(.circle)
+                            }.buttonStyle(.plain)
                         }
-                        .padding()
+                        .padding(10)
                         .background(Color.gray.opacity(0.2))
                         .cornerRadius(50)
                     }
@@ -90,7 +90,6 @@ struct AssistantView: View {
                         AssistantEditView(assistant: item)
                     }
             }.padding()
-            .shadow(radius: 10)
         }
     }
 

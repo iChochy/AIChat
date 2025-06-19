@@ -38,7 +38,7 @@ struct TOCToolbarItemView: View {
     }
     
     func scrollToMessage(message:ChatMessage){
-        proxy.scrollTo(message, anchor: .bottom)
+        proxy.scrollTo(message, anchor: .top)
     }
 
 }

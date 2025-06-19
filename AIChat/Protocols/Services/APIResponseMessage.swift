@@ -114,5 +114,6 @@ struct Model: Codable, Identifiable {
 struct StreamRequestBody: Codable {
     let model: String
     let messages: [[String: String]]
+    let temperature:Double
     let stream: Bool
 }

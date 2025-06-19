@@ -13,6 +13,7 @@ struct SessionSideView: View {
 
     @Query(sort: [SortDescriptor(\ChatSession.createdAt, order: .reverse)])
     private var sessions: [ChatSession] = []
+    var deleteSession: () -> Void
 
     var body: some View {
         Section {
@@ -25,7 +26,7 @@ struct SessionSideView: View {
                 .contextMenu {  // 右键菜单删除
                     Button {
                         deleteSession(session)
-                    }label: {
+                    } label: {
                         Image(systemName: "trash")
                         Text("Delete Chat")
                     }
@@ -36,11 +37,11 @@ struct SessionSideView: View {
         }
     }
 
-
     // 删除会话
     private func deleteSession(_ session: ChatSession) {
         modelContext.delete(session)
         try? modelContext.save()
+        deleteSession()
     }
 
 }

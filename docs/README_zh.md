@@ -17,18 +17,25 @@ AI Chat 是一个智能聊天工具，支持DeepSeek 、Gemini、Grok、OpenAI�
 3. 实现了 AI 的会话功能，多个模型灵活切换    
 4. Markdown渲染（使用MarkdownUI）  
 5. 支持思考模型，流式输出    
-6. MenuBar 快速入口
+6. 菜单栏快速入口
+7. 会话目录导航（TOC）
+8. 自定义提示词（Prompt）
+9. 自定义AI智能体助手（Assistant）
 
 ## 截图预览
 ![Chat.jpg](https://image.ichochy.com/AIChat/Chat.jpg)
+
+![TOC.jpg](https://image.ichochy.com/AIChat/TOC.jpg)
+
+![Assistant.jpg](https://image.ichochy.com/AIChat/Assistant.jpg)
+
+![Assistant Add.jpg](https://image.ichochy.com/AIChat/AssistantAdd.jpg)
 
 ![General.jpg](https://image.ichochy.com/AIChat/General.jpg)
 
 ![Provider.jpg](https://image.ichochy.com/AIChat/Provider.jpg)
 
 ![About.jpg](https://image.ichochy.com/AIChat/About.jpg)
-
-
 
 ## About
 ### 博客
@@ -50,9 +57,20 @@ AI Chat: [https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.z
 
 ## 更新
 ### 20250605(0.1(2))
-添加DeepSeek的支持  
-添加MenuBar快速入口  
-更新输入框样式（悬浮）  
+* 添加DeepSeek的支持  
+* 添加MenuBar快速入口  
+* 更新输入框样式 
+
+### 202506010(0.1(3))
+* 整体样式细节优化
+* 添加会话目录导航（TOC）
+
+### 20250619(0.1(4))
+* 添加AI智能体助手设置（Assistant）
+* 添加自定义提示词（Prompt）
+* 添加加温度参数设置（temperature）
+* 整体样式细节优化
+
 
 ## 鸣谢：
 MarkdownUI：[https://github.com/apparata/MarkdownUI](https://github.com/apparata/MarkdownUI)

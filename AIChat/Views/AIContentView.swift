@@ -31,7 +31,9 @@ struct AIContentView: View {
                     AssistantSideView { assistant in
                         createNewSession(assistant: assistant)
                     }
-                    SessionSideView()
+                    SessionSideView{
+                        selectedSession = nil
+                    }
                 }
                 VStack {
                     Menu(getDefaultModelName()) {
@@ -57,8 +59,9 @@ struct AIContentView: View {
                                 .foregroundStyle(Color.accentColor)
                             Text("Settings")
                             Spacer()
-                        }.frame(maxWidth: .infinity)
-                    }.font(.title)
+                        }.font(.title)
+                    }
+                    .buttonStyle(.plain)
                 }
                 .padding()
             }
@@ -97,9 +100,6 @@ struct AIContentView: View {
     /// - Parameter session: Session
     ///
     private func createSystemMessage(session: ChatSession) {
-        guard language != .auto else {
-            return
-        }
         let systemMessage = ChatMessage(
             modelName: ChatRoleEnum.system.rawValue,
             content: language.content,
@@ -107,7 +107,6 @@ struct AIContentView: View {
             session: session
         )
         modelContext.insert(systemMessage)
-        try? modelContext.save()
     }
 
     /// 设置默认模型
@@ -165,18 +164,12 @@ struct AIContentView: View {
     @MainActor
     private func createNewSession(model: AIModel, assistant: Assistant) {
         let session = createNewSession(model: model)
+        session.temperature = assistant.temperature
         if let model = assistant.model {
             session.model = model
         }
-        if !assistant.prompt.isEmpty {
-            let promptMessage = ChatMessage(
-                modelName: ChatRoleEnum.system.rawValue,
-                content: assistant.prompt,
-                role: .system,
-                session: session
-            )
-            modelContext.insert(promptMessage)
-//            try? modelContext.save()
+        if let message = session.messages.first {
+            message.content.append(assistant.prompt)
         }
         selectedSession = session
     }
@@ -190,8 +183,8 @@ struct AIContentView: View {
         }
         let newSession = ChatSession(model: model)
         modelContext.insert(newSession)
-        createSystemMessage(session: newSession)
         try? modelContext.save()  // 保存以获取持久化 ID
+        createSystemMessage(session: newSession)
         return newSession
     }
 

@@ -11,14 +11,11 @@ import SwiftUI
 // MARK: - View Model
 @MainActor
 class ChatViewModel: ObservableObject {
-    private var modelContext:ModelContext?
-    private var session:ChatSession?
     @AppStorage("language") var language = LanguageEnum.auto
     @Published var userInput: String = ""
     @Published var isSending: Bool = false
     @AppStorage("nickname") var nickname = "AI Chat"
     
-
     func sendMessage(session:ChatSession,modelContext:ModelContext) {
         let userContent = userInput.trimmingCharacters(
             in: .whitespacesAndNewlines
@@ -56,7 +53,6 @@ class ChatViewModel: ObservableObject {
             isSending = false
         }
 
-
         guard let model = session.model else {
             session.message = "Please select model!"
             return
@@ -67,12 +63,13 @@ class ChatViewModel: ObservableObject {
             return
         }
 
-        do {            
+        do {
             let stream = try await provider.type.data.service.streamChatResponse(
+                provider: provider,
                 model: model,
-                messages: session.sortedMessages
+                messages: session.sortedMessages,
+                temperature: session.temperature
             )
-            
             let assistantMessage = ChatMessage(
                 modelName: model.name,
                 content: "",
@@ -80,65 +77,19 @@ class ChatViewModel: ObservableObject {
                 isStreaming: true,
                 session: session
             )
+
+            await MainActor.run{
+                modelContext.insert(assistantMessage)
+                try? modelContext.save()
+            }
             
-            // 积累内容和推理的缓冲区
-            var accumulatedContent = ""
-            var accumulatedReasoning = ""
-            var totalCount = 0
-
-            for try await chunk in stream {
-                if let reasoning = chunk.reasoning {
-                    accumulatedReasoning.append(reasoning)
-                    if accumulatedReasoning.count > totalCount {
-                        assistantMessage.reasoning.append(accumulatedReasoning)
-                        accumulatedReasoning = ""
-                        //                        try await Task.sleep(nanoseconds: 300_000_000)
-                        totalCount += 10
-                    }
-                    // 处理剩余的积累内容
-                } else if !accumulatedReasoning.isEmpty {
-                    assistantMessage.reasoning.append(accumulatedReasoning)
-                    accumulatedReasoning = ""
-                }
-
-                if let content = chunk.content {
-                    accumulatedContent.append(content)
-                    if accumulatedContent.count > totalCount {
-                        assistantMessage.content.append(accumulatedContent)
-                        accumulatedContent = ""
-                        //                        try await Task.sleep(nanoseconds: 300_000_000)
-                        totalCount += 10
-                    }
-                }
-            }
-            print(totalCount)
-
-            // 处理剩余的积累内容
-            if !accumulatedContent.isEmpty {
-                assistantMessage.content.append(accumulatedContent)
-            }
-
-            assistantMessage.isStreaming = false
-            modelContext.insert(assistantMessage)
-            try? modelContext.save()
+            try await ResponseContentHelper(message: assistantMessage).contentHelper(stream: stream)
         } catch {
             session.message = String(describing: error)
         }
         
-        
-
     }
 
-    private func setReasoning(message: ChatMessage, reasoning: String?) {
-        if let reasoning = reasoning {
-            message.reasoning.append(contentsOf: reasoning)
-        }
-    }
-
-    private func setContent(message: ChatMessage, content: String?) {
-        if let content = content {
-            message.content.append(contentsOf: content)
-        }
-    }
+    
 
 }

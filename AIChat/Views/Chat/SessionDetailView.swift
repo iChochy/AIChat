@@ -36,12 +36,13 @@ struct SessionDetailView: View {
                     message: messages.last,
                     anchor: .bottom
                 )
-            }.scrollClipDisabled()
-                .toolbar {
-                    if messages.count > 0 {
-                        TOCToolbarItemView(messages: messages, proxy: proxy)
-                    }
+            }
+            //            .scrollClipDisabled()
+            .toolbar {
+                if messages.count > 0 {
+                    TOCToolbarItemView(messages: messages, proxy: proxy)
                 }
+            }
         }
     }
 
@@ -52,6 +53,5 @@ struct SessionDetailView: View {
     ) {
         proxy.scrollTo(message, anchor: anchor)
     }
-    
 
 }

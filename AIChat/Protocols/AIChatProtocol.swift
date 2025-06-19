@@ -9,8 +9,10 @@
 protocol AIChatProtocol {
     
     func streamChatResponse(
+        provider:AIProvider,
         model: AIModel,
-        messages: [ChatMessage]
+        messages: [ChatMessage],
+        temperature:Double
     ) async throws -> AsyncThrowingStream<Delta, Error>  // 返回文本块的流
     
     

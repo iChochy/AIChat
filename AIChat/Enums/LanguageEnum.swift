@@ -18,9 +18,9 @@ enum LanguageEnum: String, CaseIterable, Identifiable, Hashable {
     var content: String {
         switch self {
         case .chinese:
-            return "Answer in Chinese"
+            return "Answer in Chinese. "
         case .english:
-            return "Answers in English"
+            return "Answers in English. "
         default:
             return ""
         }
