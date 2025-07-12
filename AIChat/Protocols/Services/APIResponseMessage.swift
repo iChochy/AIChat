@@ -12,7 +12,6 @@ struct APIResponseMessage: Decodable {
     let choices: [Choice]?
     struct Choice: Decodable {
         let delta: Delta?
-        
     }
 }
 
@@ -116,4 +115,39 @@ struct StreamRequestBody: Codable {
     let messages: [[String: String]]
     let temperature:Double
     let stream: Bool
+    var extraBody:ExtraBody?
+    enum CodingKeys: String, CodingKey {
+        case model
+        case messages
+        case temperature
+        case stream
+        case extraBody = "extra_body"
+    }
 }
+
+
+// 外层结构：extra_body
+struct ExtraBody: Codable {
+    let google: Google
+}
+
+// 内层结构：google
+struct Google: Codable {
+    let thinkingConfig: ThinkingConfig
+    
+    // 处理下划线键名转换为驼峰式
+    enum CodingKeys: String, CodingKey {
+        case thinkingConfig = "thinking_config"
+    }
+}
+
+// 最内层结构：thinking_config
+struct ThinkingConfig: Codable {
+    let includeThoughts: Bool = true
+    
+    // 处理下划线键名转换为驼峰式
+    enum CodingKeys: String, CodingKey {
+        case includeThoughts = "include_thoughts"
+    }
+}
+

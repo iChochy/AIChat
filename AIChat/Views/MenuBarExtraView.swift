@@ -11,7 +11,7 @@ struct MenuBarExtraView: View {
     @Environment(\.openWindow) private var openWindow
 
     var body: some View {
-        Button("AI Chat") {
+        Button("Chat") {
             openChatWindow()
         }.keyboardShortcut("N")
         Button("Setting..") {
@@ -38,6 +38,7 @@ struct MenuBarExtraView: View {
                 window.makeKeyAndOrderFront(nil)
             }
         } else {
+            NSApp.activate(ignoringOtherApps: true)
             openWindow(id: "Chat")
         }
     }

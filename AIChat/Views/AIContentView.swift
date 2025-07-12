@@ -59,9 +59,10 @@ struct AIContentView: View {
                                 .foregroundStyle(Color.accentColor)
                             Text("Settings")
                             Spacer()
-                        }.font(.title)
+                        }.font(.title2)
                     }
                     .buttonStyle(.plain)
+                    .padding(.top,5)
                 }
                 .padding()
             }

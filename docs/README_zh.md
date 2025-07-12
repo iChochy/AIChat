@@ -71,6 +71,10 @@ AI Chat: [https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.z
 * 添加加温度参数设置（temperature）
 * 整体样式细节优化
 
+### 20250619(0.1(5))
+* 完善Gemini的思考信息展示
+* 调整设置按钮、输入框的样式
+* 整体样式细节优化
 
 ## 鸣谢：
 MarkdownUI：[https://github.com/apparata/MarkdownUI](https://github.com/apparata/MarkdownUI)

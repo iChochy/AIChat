@@ -18,7 +18,7 @@ struct ChatMessageView: View {
         } else {
             VStack(alignment: message.role == .user ? .trailing : .leading) {
                 HStack {
-                    Text(message.modelName)
+                    Text(getModelName(message: message))
                         .bold()
                         .foregroundColor(.gray)
                     if message.isStreaming {
@@ -35,7 +35,14 @@ struct ChatMessageView: View {
             }
             .opacity(message.isStreaming ? 0.7 : 1.0)  // 流式消息可以稍微透明
         }
-
+    }
+    
+    
+    private func getModelName(message: ChatMessage) -> String{
+        if message.role  != .user{
+            return message.modelName.capitalized
+        }
+        return message.modelName
     }
 
 }

@@ -43,22 +43,22 @@ struct InputAreaView: View {
                     )
                     .allowsHitTesting(false)
                 )
-                .padding()
+                .padding(.leading,10)
+                .padding(.vertical,5)
                 .font(.title2)
-                .bold()
                 .scrollIndicators(.hidden)
             Button {
                 sendMessage()
             } label: {
                 if chatViewModel.isSending {
                     ZStack {
-                        ProgressView()
+                        ProgressView().scaleEffect(0.8)
                         Image(systemName: "arrow.up.circle.fill")
-                            .font(.system(size: 45)).hidden()
+                            .font(.system(size: 30)).hidden()
                     }
                 } else {
                     Image(systemName: "arrow.up.circle.fill")
-                        .font(.system(size: 45))
+                        .font(.system(size: 30))
                 }
             }
             .keyboardShortcut(.return, modifiers: .command)
@@ -71,14 +71,15 @@ struct InputAreaView: View {
             .buttonStyle(.link)
         }
         .overlay(
-            RoundedRectangle(cornerRadius: 30)
+            RoundedRectangle(cornerRadius: 18)
                 .stroke(Color.gray.opacity(0.8), lineWidth: 2)
         )
         .background(.quaternary)
         .background()
-        .cornerRadius(30)
+        .cornerRadius(18)
         .padding(.bottom)
         .padding(.horizontal, 50)
+        .shadow(radius: 10)
     }
 
     func sendMessage() {

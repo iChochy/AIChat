@@ -10,7 +10,7 @@ import Foundation
 
 class ResponseContentHelper{
     let message:ChatMessage
-    var totalCount = 50
+    var totalCount = 1
     var accumulatedContent = ""
     var accumulatedReasoning = ""
         
@@ -29,6 +29,7 @@ class ResponseContentHelper{
             accumulatedContent = ""
         }
         message.isStreaming = false
+        print(totalCount)
     }
     
 
@@ -38,6 +39,7 @@ class ResponseContentHelper{
             if accumulatedReasoning.count > totalCount {
                 message.reasoning.append(accumulatedReasoning)
                 accumulatedReasoning = ""
+                totalCount += 1
                 //                        try await Task.sleep(nanoseconds: 300_000_000)
             }
             // 处理剩余的积累内容
@@ -54,6 +56,7 @@ class ResponseContentHelper{
             if accumulatedContent.count > totalCount {
                 message.content.append(accumulatedContent)
                 accumulatedContent = ""
+                totalCount += 1
                 //                        try await Task.sleep(nanoseconds: 300_000_000)
             }
             // 处理剩余的积累内容
@@ -62,7 +65,6 @@ class ResponseContentHelper{
             accumulatedContent = ""
         }
     }
-    
     
     private func setReasoning(message: ChatMessage, reasoning: String?) {
         if let reasoning = reasoning {

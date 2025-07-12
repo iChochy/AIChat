@@ -14,7 +14,7 @@ struct AboutView: View {
     // 从 Bundle 获取基本信息
 
     let appName =
-        Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? ""
+        Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
     let appVersion =
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         ?? "1.0"

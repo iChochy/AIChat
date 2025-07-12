@@ -40,7 +40,7 @@ Currently supports DeepSeek, Gemini, Grok, OpenAI, and custom AI providers.
 ### Blog
 [https://ichochy.com](https://ichochy.com)
 
-<h3>Website</h3>
+### Website
 [https://ai.ichochy.com](https://ai.ichochy.com)
 
 ### GitHub
@@ -68,6 +68,12 @@ AI Chat: [https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.z
 *   Added customizable prompts.
 *   Added temperature parameter settings.
 *   Overall style details optimized.
+
+### 20250619(0.1(5))
+*   Enhanced Gemini's thought process display.
+*   Adjusted the styling of the settings button and input field.
+*   Overall style details optimized.
+
 
 ## Acknowledgements:
 MarkdownUI: [https://github.com/apparata/MarkdownUI](https://github.com/apparata/MarkdownUI)

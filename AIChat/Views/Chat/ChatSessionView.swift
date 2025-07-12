@@ -24,9 +24,7 @@ struct ChatSessionView: View {
         }
         .textSelection(.enabled)  // 允许选择文本
         .navigationTitle(session.title.isEmpty ? "New Chat" : session.title)
-        .onAppear {
-//            viewModel.setup(modelContext: modelContext, session: session)
-        }.toolbar {
+        .toolbar {
             ToolbarItem {
                 Menu(getSessionModelName()) {
                     ForEach(providers) { provider in

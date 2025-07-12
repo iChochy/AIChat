@@ -73,7 +73,7 @@ class GeminiService: AIChatProtocol {
         )
 
         // 构建请求体
-        let requestBody = StreamRequestBody(
+        var requestBody = StreamRequestBody(
             model: model.name,
             messages: messages.map({ message in
                 message.apiRepresentation
@@ -81,8 +81,9 @@ class GeminiService: AIChatProtocol {
             temperature: temperature,
             stream: true
         )
+        requestBody.extraBody = ExtraBody(google: Google(thinkingConfig: ThinkingConfig()))
         request.httpBody = try JSONEncoder().encode(requestBody)
-
+        
         // 获取流式响应
         let (bytes, response) = try await session.bytes(
             for: request
@@ -113,6 +114,7 @@ class GeminiService: AIChatProtocol {
         bytes: URLSession.AsyncBytes,
         continuation: AsyncThrowingStream<Delta, Error>.Continuation
     ) async throws {
+        var isThinking = false
         for try await line in bytes.lines {
             print(line)
             guard line.hasPrefix("data:") else { continue }
@@ -135,6 +137,7 @@ class GeminiService: AIChatProtocol {
                     from: jsonData
                 )
                 if let content = response.choices?.first?.delta {
+                    let content = transformThinking(delta: content,isThinking:&isThinking)
                     continuation.yield(content)
                 }
             } catch {
@@ -142,6 +145,26 @@ class GeminiService: AIChatProtocol {
                 continue
             }
         }
+    }
+    
+    private func transformThinking(delta:  Delta,isThinking: inout Bool) -> Delta{
+        guard var  content = delta.content else {
+            return delta
+        }
+        if content.contains("<thought>") {
+            isThinking = true
+            content.removeAll{ "<thought>".contains($0) }
+        }else if content.contains("</thought>") {
+            isThinking = false
+            content.removeAll { content in
+                "</thought>".contains(content)
+            }
+        }
+        let delta = Delta(
+                content: isThinking ? nil : content,
+                reasoning: isThinking ? content : nil
+            )
+        return delta
     }
 }
 

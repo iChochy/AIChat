@@ -19,14 +19,14 @@ struct ChatContentView: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .background(messageBackgroundColor)
                     .foregroundStyle(messageForegroundColor)
-                    .cornerRadius(30)
+                    .cornerRadius(20)
             case .user:
                 Text(message.content)
-                    .padding()
+                    .padding(10)
                     .fixedSize(horizontal: false, vertical: true)
                     .background(messageBackgroundColor)
                     .foregroundStyle(messageForegroundColor)
-                    .cornerRadius(30)
+                    .cornerRadius(20)
             case .assistant:
                 Markdown(toMarkdown(), lazy: true)
 //                    .padding()
