@@ -1,8 +1,8 @@
-# AI Chat
+# iChat
 
 [[中文](https://ai.ichochy.com/README_zh.html)]｜[[English](https://ai.ichochy.com)]
 
-AI Chat is an intelligent chat tool that supports DeepSeek, Gemini, Grok, OpenAI, and custom AI providers. Developed with SwiftUI and SwiftData, it is a native macOS AI client application.
+iChat is an intelligent chat tool that supports DeepSeek, Gemini, Grok, OpenAI, and custom AI providers. Developed with SwiftUI and SwiftData, it is a native macOS AI client application.
 
 ## Development Environment
 Development Tool: Xcode 16.3   
@@ -44,7 +44,7 @@ Currently supports DeepSeek, Gemini, Grok, OpenAI, and custom AI providers.
 [https://ai.ichochy.com](https://ai.ichochy.com)
 
 ### GitHub
-[https://github.com/iChochy/AIChat](https://github.com/iChochy/AIChat)
+[https://github.com/iChochy/AIChat](https://github.com/iChochy/iChat)
 
 ### Download
 [https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.zip)

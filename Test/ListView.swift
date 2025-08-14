@@ -1,6 +1,6 @@
 //
 //  ListView.swift
-//  AIChat
+//  iChat
 //
 //  Created by Lion on 2025/6/10.
 //

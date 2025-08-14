@@ -1,8 +1,8 @@
-# AI Chat
+# iChat
 
 [[中文](https://ai.ichochy.com/README_zh.html)]｜[[English](https://ai.ichochy.com)]
 
-AI Chat 是一个智能聊天工具，支持DeepSeek 、Gemini、Grok、OpenAI和自定义AI，使用SwiftUI、SwiftData开发，macOS原生AI客服端
+iChat 是一个智能聊天工具，支持DeepSeek 、Gemini、Grok、OpenAI和自定义AI，使用SwiftUI、SwiftData开发，macOS原生AI客服端
 
 ## 开发环境
 开发工具：Xcode 16.3   
@@ -45,7 +45,7 @@ AI Chat 是一个智能聊天工具，支持DeepSeek 、Gemini、Grok、OpenAI�
 [https://ai.ichochy.com](https://ai.ichochy.com)
 
 ### GitHub
-[https://github.com/iChochy/AIChat](https://github.com/iChochy/AIChat)
+[https://github.com/iChochy/AIChat](https://github.com/iChochy/iChat)
 
 ### 下载
 [https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.zip)
