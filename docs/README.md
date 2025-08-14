@@ -44,7 +44,7 @@ Currently supports DeepSeek, Gemini, Grok, OpenAI, and custom AI providers.
 [https://ai.ichochy.com](https://ai.ichochy.com)
 
 ### GitHub
-[https://github.com/iChochy/AIChat](https://github.com/iChochy/iChat)
+[https://github.com/iChochy/iChat](https://github.com/iChochy/iChat)
 
 ### Download
 [https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.zip)
