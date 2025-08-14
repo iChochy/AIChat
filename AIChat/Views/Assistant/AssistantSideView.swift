@@ -22,6 +22,7 @@ struct AssistantSideView: View {
 
     var body: some View {
         Section {
+            Divider()
             Button {
                 createSession(assistant)
             } label: {

@@ -47,7 +47,7 @@ Currently supports DeepSeek, Gemini, Grok, OpenAI, and custom AI providers.
 [https://github.com/iChochy/AIChat](https://github.com/iChochy/AIChat)
 
 ### Download
-AI Chat: [https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.zip)
+[https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.zip)
 
 ### Installation Instructions
 **Note:** As the application is not signed with an Apple Developer ID, macOS will display a security warning upon first launch.   

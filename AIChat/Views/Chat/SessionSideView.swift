@@ -17,6 +17,7 @@ struct SessionSideView: View {
 
     var body: some View {
         Section {
+            Divider()
             ForEach(sessions) { session in
                 Text(
                     session.title.isEmpty

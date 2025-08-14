@@ -25,7 +25,6 @@ struct AIContentView: View {
 
     var body: some View {
         NavigationSplitView {
-            Divider()
             VStack {
                 List(selection: $selectedSession) {
                     AssistantSideView { assistant in

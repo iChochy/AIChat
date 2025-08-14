@@ -20,7 +20,7 @@ struct InputAreaView: View {
             TextEditor(text: $chatViewModel.userInput)
                 .scrollContentBackground(.hidden)
                 .disabled(chatViewModel.isSending)
-                .frame(height: min(200, max(20, textHeight)))
+                .frame(height: min(200, max(22, textHeight)))
                 .background(
                     Text(
                         chatViewModel.userInput.isEmpty

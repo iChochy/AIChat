@@ -48,7 +48,7 @@ AI Chat 是一个智能聊天工具，支持DeepSeek 、Gemini、Grok、OpenAI�
 [https://github.com/iChochy/AIChat](https://github.com/iChochy/AIChat)
 
 ### 下载
-AI Chat: [https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.zip)
+[https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.zip)
 
 ### 安装说明
 **注意：** 因未使用开发者签名，首次运行会触发 macOS 安全提示。    
