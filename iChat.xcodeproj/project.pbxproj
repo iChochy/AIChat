@@ -78,7 +78,7 @@
 /* Begin PBXFileReference section */
 		1045A4542DFF16140062042A /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
 		10C9F6AC2E05295A00A8719E /* ResponseContentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseContentHelper.swift; sourceTree = "<group>"; };
-		B400B5062DEF3DAB002CF2B4 /* README_zh.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_zh.md; sourceTree = "<group>"; };
+		B400B5062DEF3DAB002CF2B4 /* README_zh.md */ = {isa = PBXFileReference; explicitFileType = text; path = README_zh.md; sourceTree = "<group>"; };
 		B400B5082DEF4199002CF2B4 /* _config.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = _config.yml; sourceTree = "<group>"; };
 		B42DB27E2DFA8C1A005EF8BE /* AssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantView.swift; sourceTree = "<group>"; };
 		B42DB2802DFA8F7B005EF8BE /* AssistantEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantEditView.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		B48070312D9BB678004C952C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B49731592DF1C55C004D9DCD /* DeepSeekService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepSeekService.swift; sourceTree = "<group>"; };
 		B497315B2DF1DA49004D9DCD /* MenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarExtraView.swift; sourceTree = "<group>"; };
-		B497315D2DF2F577004D9DCD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B497315D2DF2F577004D9DCD /* README.md */ = {isa = PBXFileReference; explicitFileType = text; path = README.md; sourceTree = "<group>"; };
 		B497315E2DF34C54004D9DCD /* CustomMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageView.swift; sourceTree = "<group>"; };
 		B49731602DF46B9C004D9DCD /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		B49731622DF55EF0004D9DCD /* TOCToolbarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOCToolbarItemView.swift; sourceTree = "<group>"; };

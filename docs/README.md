@@ -1,4 +1,4 @@
-# iChat
+# iChat(AI Chat)
 
 [[中文](https://ai.ichochy.com/README_zh.html)]｜[[English](https://ai.ichochy.com)]
 
@@ -47,7 +47,7 @@ Currently supports DeepSeek, Gemini, Grok, OpenAI, and custom AI providers.
 [https://github.com/iChochy/iChat](https://github.com/iChochy/iChat)
 
 ### Download
-[https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.zip)
+[https://file.ichochy.com/iChat.zip](https://file.ichochy.com/iChat.zip)
 
 ### Installation Instructions
 **Note:** As the application is not signed with an Apple Developer ID, macOS will display a security warning upon first launch.   

@@ -1,4 +1,4 @@
-# iChat
+# iChat(AI Chat)
 
 [[中文](https://ai.ichochy.com/README_zh.html)]｜[[English](https://ai.ichochy.com)]
 
@@ -48,7 +48,7 @@ iChat 是一个智能聊天工具，支持DeepSeek 、Gemini、Grok、OpenAI和�
 [https://github.com/iChochy/iChat](https://github.com/iChochy/iChat)
 
 ### 下载
-[https://file.ichochy.com/AIChat.zip](https://file.ichochy.com/AIChat.zip)
+[https://file.ichochy.com/iChat.zip](https://file.ichochy.com/iChat.zip)
 
 ### 安装说明
 **注意：** 因未使用开发者签名，首次运行会触发 macOS 安全提示。    
