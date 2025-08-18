@@ -23,9 +23,14 @@ struct ProviderView: View {
     var providers: [AIProvider] = []
 
     var body: some View {
+
         List(content: {
-            ForEach(providers) { item in
-                ProviderEditorView(provider: item)
+            if providers.isEmpty {
+                noDataView()
+            } else {
+                ForEach(providers) { item in
+                    ProviderEditorView(provider: item)
+                }
             }
         }).scrollContentBackground(.hidden)
             .toolbar {
@@ -61,4 +66,35 @@ struct ProviderView: View {
         context.insert(provider)
         try? context.save()
     }
+    
+    @ViewBuilder
+    func noDataView() -> some View{
+        HStack {
+            Spacer()
+            Text("No Data").font(.title)
+            Menu {
+                ForEach(AIProviderEnum.allCases) { item in
+                    Button {
+                        addProvider(type: item)
+                    } label: {
+                        HStack {
+                            Image(systemName: "plus").foregroundStyle(
+                                Color.accentColor
+                            )
+                            Text(item.data.title)
+                        }
+                    }
+                }
+            } label: {
+                Image(systemName: "plus")
+                    .padding(5)
+                    .background(Color.accentColor)
+                    .foregroundColor(.white)
+                    .clipShape(.buttonBorder)
+            }
+            Spacer()
+        }.padding(10)
+            .buttonStyle(PlainButtonStyle())
+    }
+    
 }

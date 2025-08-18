@@ -18,6 +18,13 @@ struct ProviderEditorView: View {
     var body: some View {
         Section {
             Form {
+                TextField(
+                    "APIURL",
+                    text: $provider.APIURL,
+                    prompt: Text("e.g. https://api.ichochy.com")
+                ).textFieldStyle(
+                    .roundedBorder
+                )
                 ZStack {
                     HStack {
                         if isKeyVisible {
@@ -43,14 +50,6 @@ struct ProviderEditorView: View {
                         }.buttonStyle(.borderless)
                     }
                 }
-
-                TextField(
-                    "APIURL",
-                    text: $provider.APIURL,
-                    prompt: Text("e.g. https://api.ichochy.com")
-                ).textFieldStyle(
-                    .roundedBorder
-                )
                 ModelEditorView(provider: provider)
             }.textFieldStyle(.roundedBorder)
         } header: {
